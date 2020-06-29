@@ -51,7 +51,10 @@ const initialstateSongsByArtist = {
   errorSongsByArtist: {},
 };
 
-export const getSongsByArtistReducer = (state = initialstateSongsByArtist, action) => {
+export const getSongsByArtistReducer = (
+  state = initialstateSongsByArtist,
+  action,
+) => {
   switch (action.type) {
     case GET_SONGS_BY_ARTIST_REQUEST:
       return {
@@ -131,7 +134,10 @@ const initialstateDetailSong = {
   errorDetail: [],
 };
 
-export const getDetailSongReducer = (state = initialstateDetailSong, action) => {
+export const getDetailSongReducer = (
+  state = initialstateDetailSong,
+  action,
+) => {
   switch (action.type) {
     case GET_DETAIL_SONG_REQUEST:
       return {
