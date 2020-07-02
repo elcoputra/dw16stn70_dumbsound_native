@@ -1,6 +1,7 @@
 # Welcome to Dumbsound Native!
 
 Dumbsound native is a mobile application for the dumbsound web application, providing online music streaming, created with React Native CLI
+[Go to backend](https://github.com/elcoputra/dw16stn70_dumbsound_backend)
 
 # Screenshoot
 ![ss](https://raw.githubusercontent.com/elcoputra/dw16stn70_dumbsound_native/master/SS/All.png)
