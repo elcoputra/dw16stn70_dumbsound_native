@@ -43,14 +43,15 @@ function MusicPlayer(props) {
       <View style={styles.container2}>
         <View style={styles.containerArt}>
           <Image
-            resizeMode={'contain'}
             style={styles.art}
             source={{uri: trackObject.artwork}}
             //   source={require('../img/dumbsound.png')}
           />
         </View>
         <View style={styles.containerNameSong}>
-          <Text style={styles.nameSong}>{trackObject.title}</Text>
+          <Text style={styles.nameSong}>
+            {trackObject.title ? trackObject.title : 'Chose song'}
+          </Text>
         </View>
         {/* <View style={styles.containerPrev}>
           <TouchableOpacity onPress={stopMusic}>

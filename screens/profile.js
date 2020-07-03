@@ -14,10 +14,13 @@ import {authAction, logoutUser} from '../redux/actions/auth_action';
 
 import AsyncStorage from '@react-native-community/async-storage';
 
+import TrackPlayer from 'react-native-track-player';
+
 import Fontisto from 'react-native-vector-icons/Fontisto';
 
 function Profile(props) {
-  const logutAccount = () => {
+  const logutAccount = async () => {
+    await TrackPlayer.reset();
     AsyncStorage.removeItem('token');
     props.logoutUser();
     props.authAction();
@@ -43,7 +46,7 @@ function Profile(props) {
           <View style={styles.contentRow}>
             {/* Container icon */}
             <View style={styles.contentIcon}>
-              <Fontisto name="person" color="red" size={48} />
+              <Fontisto name="person" color="red" size={24} />
             </View>
             {/* Child content column */}
             <View style={styles.contentColum}>
@@ -62,7 +65,7 @@ function Profile(props) {
           <View style={styles.contentRow}>
             {/* Container icon */}
             <View style={styles.contentIcon}>
-              <Fontisto name="email" color="red" size={48} />
+              <Fontisto name="email" color="red" size={24} />
             </View>
             {/* Child content column */}
             <View style={styles.contentColum}>
@@ -81,7 +84,7 @@ function Profile(props) {
           <View style={styles.contentRow}>
             {/* Container icon */}
             <View style={styles.contentIcon}>
-              <Fontisto name="checkbox-active" color="red" size={48} />
+              <Fontisto name="checkbox-active" color="red" size={24} />
             </View>
             {/* Child content column */}
             <View style={styles.contentColum}>
@@ -102,7 +105,7 @@ function Profile(props) {
           <View style={styles.contentRow}>
             {/* Container icon */}
             <View style={styles.contentIcon}>
-              <Fontisto name="transgender" color="red" size={48} />
+              <Fontisto name="transgender" color="red" size={24} />
             </View>
             {/* Child content column */}
             <View style={styles.contentColum}>
@@ -121,7 +124,7 @@ function Profile(props) {
           <View style={styles.contentRow}>
             {/* Container icon */}
             <View style={styles.contentIcon}>
-              <Fontisto name="phone" color="red" size={48} />
+              <Fontisto name="phone" color="red" size={24} />
             </View>
             {/* Child content column */}
             <View style={styles.contentColum}>
@@ -140,7 +143,7 @@ function Profile(props) {
           <View style={styles.contentRow}>
             {/* Container icon */}
             <View style={styles.contentIcon}>
-              <Fontisto name="map" color="red" size={48} />
+              <Fontisto name="map" color="red" size={24} />
             </View>
             {/* Child content column */}
             <View style={styles.contentColum}>
@@ -206,6 +209,7 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
   contentIcon: {
+    justifyContent: 'center',
     flex: 1 / 7,
   },
   content: {
@@ -230,14 +234,15 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   buttonRegister: {
-    width: '100%',
+    width: '50%',
     height: 50,
     backgroundColor: '#ee4622',
-    borderRadius: 5,
+    borderRadius: 10,
+    justifyContent: 'center',
   },
   textButton: {
     color: 'white',
-    fontSize: 30,
+    fontSize: 24,
     fontWeight: 'bold',
     textAlign: 'center',
   },

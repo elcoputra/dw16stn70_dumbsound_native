@@ -1,30 +1,16 @@
-import React, {Component, useEffect} from 'react';
+import React from 'react';
 import {
   StyleSheet,
   View,
   Text,
   Image,
   TouchableOpacity,
-  TextInput,
   ScrollView,
-  Platform,
-  Modal,
 } from 'react-native';
-import RNPickerSelect from 'react-native-picker-select';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import {connect} from 'react-redux';
 
 function Initial(props) {
-  // hook, di dalem value usesate adalah data di dalam data register
-  const [dataRegister, setdataRegister] = React.useState({gender: 'Male'});
-  // extract value object dala data register
-  const {email, password, fullName, gender, phone, address} = dataRegister;
-  // data dalam objek state data register berubah
-  const onChangeText = (text, name) => {
-    setdataRegister({...dataRegister, [name]: text});
-    console.log(dataRegister);
-  };
   return (
     <View style={styles.container}>
       <View style={styles.contentContainer}>
@@ -141,26 +127,28 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   buttonRegister: {
+    justifyContent: 'center',
     width: '100%',
     height: 50,
     backgroundColor: '#ee4622',
-    borderRadius: 5,
+    borderRadius: 10,
   },
   textButton: {
     color: 'white',
-    fontSize: 30,
+    fontSize: 24,
     fontWeight: 'bold',
     textAlign: 'center',
   },
   buttonRegister2: {
+    justifyContent: 'center',
     width: '100%',
     height: 50,
     backgroundColor: 'white',
-    borderRadius: 5,
+    borderRadius: 10,
   },
   textButton2: {
     color: 'red',
-    fontSize: 30,
+    fontSize: 24,
     fontWeight: 'bold',
     textAlign: 'center',
   },
@@ -182,38 +170,6 @@ const styles = StyleSheet.create({
   },
   buttomDetailTextContainer: {
     flexDirection: 'row',
-  },
-});
-
-const pickerSelectStyles = StyleSheet.create({
-  inputIOS: {
-    fontSize: 16,
-    marginTop: 10,
-    height: 60,
-    backgroundColor: '#4C4C4C',
-    paddingHorizontal: 10,
-    borderWidth: 1,
-    borderColor: '#C5C5C5',
-    borderRadius: 5,
-    color: '#B9B9B9',
-    paddingRight: 30, // to ensure the text is never behind the icon
-  },
-  inputAndroid: {
-    fontSize: 16,
-    marginTop: 10,
-    height: 60,
-    backgroundColor: '#4C4C4C',
-    paddingHorizontal: 10,
-    paddingVertical: 8,
-    borderWidth: 2,
-    borderColor: '#C5C5C5',
-    borderRadius: 5,
-    color: '#B9B9B9',
-    paddingRight: 30, // to ensure the text is never behind the icon
-  },
-  iconContainer: {
-    top: 25,
-    right: 15,
   },
 });
 

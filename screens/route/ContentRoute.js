@@ -1,5 +1,5 @@
 // Content adalah routing content utama aplikasi
-import React, {Component, useEffect} from 'react';
+import React from 'react';
 
 import {StyleSheet} from 'react-native';
 

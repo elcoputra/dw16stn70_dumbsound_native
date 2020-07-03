@@ -237,14 +237,15 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   buttonRegister: {
+    justifyContent: 'center',
     width: '100%',
     height: 50,
     backgroundColor: '#ee4622',
-    borderRadius: 5,
+    borderRadius: 10,
   },
   textButton: {
     color: 'white',
-    fontSize: 30,
+    fontSize: 24,
     fontWeight: 'bold',
     textAlign: 'center',
   },
