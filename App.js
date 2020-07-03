@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, {useEffect} from 'react';
-import {StyleSheet, StatusBar} from 'react-native';
+import {StatusBar} from 'react-native';
 
 import {connect} from 'react-redux';
 
@@ -21,8 +21,6 @@ function App(props) {
     </>
   );
 }
-
-const styles = StyleSheet.create({});
 
 const mapStateToProps = state => {
   return {

@@ -1,8 +1,5 @@
 // Logut adalah rout untuk welcom screen user tidak login, terdapat navigator initial screen, login, register
-import React, {Component, useEffect} from 'react';
-import {StyleSheet} from 'react-native';
-
-import {connect} from 'react-redux';
+import React from 'react';
 
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
@@ -55,11 +52,13 @@ const headerNoTitleMatchBodyColor = {
   },
 };
 
-const mapStateToProps = state => {
-  return {};
-};
+// const mapStateToProps = state => {
+//   return {};
+// };
 
-export default connect(
-  mapStateToProps,
-  {},
-)(Logout);
+// export default connect(
+//   mapStateToProps,
+//   {},
+// )(Logout);
+
+export default Logout;
