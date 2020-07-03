@@ -1,4 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+// Data music yang sedang di play saya kirim lewat props ke music player props, biar simple,
+// music player track tidak usah pake redux, callbacknya sudah mewakili data object music yang sedang di mainkan
 import React, {Component, useEffect} from 'react';
 import {
   StyleSheet,
@@ -14,15 +16,36 @@ import {
 
 import {connect} from 'react-redux';
 
+import TrackPlayer from 'react-native-track-player';
+
 import {getDataSongsAction} from '../redux/actions/song_actions';
 import {getDataArtistsAction} from '../redux/actions/artist_action';
 import MusicPlayer from '../components/musicPlayer';
 
 function Home(props) {
+  const [trackObjectState, settrackObjectState] = React.useState({play: false});
+
   useEffect(() => {
     props.getDataSongsAction();
     props.getDataArtistsAction();
   }, []);
+
+  const addMusic = async (id, thumbnailLink, musicLink, title, artist) => {
+    await TrackPlayer.reset();
+    await TrackPlayer.add({
+      id: id,
+      url: musicLink,
+      title: title,
+      artist: artist,
+      artwork: thumbnailLink,
+    });
+    await TrackPlayer.play();
+    let trackId = await TrackPlayer.getCurrentTrack();
+    let trackObject = await TrackPlayer.getTrack(trackId);
+    settrackObjectState({...trackObject, play: true});
+    console.log(trackObjectState);
+  };
+
   const {songs} = props.getDataSongsReducer;
   const {artistData} = props.getDataArtistReducer;
   return (
@@ -56,7 +79,16 @@ function Home(props) {
               data={songs}
               renderItem={({item, index}) => {
                 return (
-                  <TouchableOpacity>
+                  <TouchableOpacity
+                    onPress={() =>
+                      addMusic(
+                        item.id,
+                        item.thumbnailLink,
+                        item.musicLink,
+                        item.title,
+                        item.artist.name,
+                      )
+                    }>
                     <View style={styles.containerCard}>
                       <View style={styles.containerImageCard}>
                         <Image
@@ -114,7 +146,8 @@ function Home(props) {
           </ScrollView>
         </View>
       </ScrollView>
-      <MusicPlayer />
+      {/* Saya kirim data dari player yang sedang di mainkan lewat props */}
+      <MusicPlayer trackObject={trackObjectState} />
     </View>
   );
 }

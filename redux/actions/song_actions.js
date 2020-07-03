@@ -15,17 +15,19 @@ import {
   GET_SONGS_BY_ARTIST_SUCCESS,
   GET_SONGS_BY_ARTIST_ERROR,
 } from '../actionTypes';
-import { API } from '../../config/axiosConfig';
+import {API} from '../../config/axiosConfig';
 
 // ADD SONG //
 export function postDataSongsAction(dataSong) {
-  return function (dispatch) {
+  return function(dispatch) {
     dispatch({
       type: POST_SONGS_REQUEST,
     });
     API.post('/song', dataSong)
-      .then((response) => dispatch({ type: POST_SONGS_SUCCSESS, payload: response.data.message }))
-      .catch((error) =>
+      .then(response =>
+        dispatch({type: POST_SONGS_SUCCSESS, payload: response.data.message}),
+      )
+      .catch(error =>
         dispatch({
           type: POST_SONGS_ERROR,
           payload: error.response.data.error,
@@ -35,28 +37,30 @@ export function postDataSongsAction(dataSong) {
 }
 
 export function clearMessageAddSong() {
-  return function (dispatch) {
+  return function(dispatch) {
     {
-      dispatch({ type: CLEAR_MESSAGE_ADD_SONG });
+      dispatch({type: CLEAR_MESSAGE_ADD_SONG});
     }
   };
 }
 export function clearErrorAddSong() {
-  return function (dispatch) {
+  return function(dispatch) {
     {
-      dispatch({ type: CLEAR_ERROR_ADD_SONG });
+      dispatch({type: CLEAR_ERROR_ADD_SONG});
     }
   };
 }
 
 export function getDataSongsAction() {
-  return function (dispatch) {
+  return function(dispatch) {
     dispatch({
       type: GET_SONGS_REQUEST,
     });
     API.get('/songs')
-      .then((response) => dispatch({ type: GET_SONGS_SUCCSESS, payload: response.data.data }))
-      .catch((response) =>
+      .then(response =>
+        dispatch({type: GET_SONGS_SUCCSESS, payload: response.data.data}),
+      )
+      .catch(response =>
         dispatch({
           type: GET_SONGS_ERROR,
           payload: response.error,
@@ -65,13 +69,18 @@ export function getDataSongsAction() {
   };
 }
 export function getSongsByArtistAction(id) {
-  return function (dispatch) {
+  return function(dispatch) {
     dispatch({
       type: GET_SONGS_BY_ARTIST_REQUEST,
     });
     API.get('artist/' + id + '/songs')
-      .then((response) => dispatch({ type: GET_SONGS_BY_ARTIST_SUCCESS, payload: response.data.data }))
-      .catch((error) =>
+      .then(response =>
+        dispatch({
+          type: GET_SONGS_BY_ARTIST_SUCCESS,
+          payload: response.data.data,
+        }),
+      )
+      .catch(error =>
         dispatch({
           type: GET_SONGS_BY_ARTIST_ERROR,
           payload: error.response,
@@ -81,13 +90,19 @@ export function getSongsByArtistAction(id) {
 }
 
 export function getDetailSongAction(id) {
-  return function (dispatch) {
+  return function(dispatch) {
     dispatch({
       type: GET_DETAIL_SONG_REQUEST,
     });
     API.get('/song/' + id)
-      .then((response) => dispatch({ type: GET_DETAIL_SONG_SUCCSESS, id: response.data.data.id, payload: response.data.data }))
-      .catch((response) =>
+      .then(response =>
+        dispatch({
+          type: GET_DETAIL_SONG_SUCCSESS,
+          id: response.data.data.id,
+          payload: response.data.data,
+        }),
+      )
+      .catch(response =>
         dispatch({
           type: GET_DETAIL_SONG_ERROR,
           payload: response.error,
@@ -96,7 +111,7 @@ export function getDetailSongAction(id) {
   };
 }
 export function clearPlaylist(id) {
-  return function (dispatch) {
+  return function(dispatch) {
     dispatch({
       type: CLEAR_DETAIL_SONG_SUCCSESS,
     });

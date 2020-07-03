@@ -9,6 +9,8 @@ import {NavigationContainer} from '@react-navigation/native';
 
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
+import TrackPlayer from 'react-native-track-player';
+
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -18,6 +20,9 @@ import Profile from '../profile';
 import Search from '../search';
 import Upgrade from '../upgrade';
 
+TrackPlayer.setupPlayer().then(async () => {
+  // Adds a track to the queue
+});
 const Tab = createBottomTabNavigator();
 
 function Content(props) {
